@@ -1,0 +1,8 @@
+version: '3.8'
+
+services:
+  chunk.customer.api:
+    image: chunk-customer-api
+    build:
+      context: .
+      dockerfile: ./services/chunk_customer/Dockerfile
