@@ -1,6 +1,6 @@
-version: '3.8'
 
 services:
   chunk.customer.api:
     container_name: chunk.customer.api
-    command: 'fastapi dev main.py'
+    ports:
+      - 8000:8000

@@ -16,4 +16,8 @@ RUN apt-get -y install python3-pip
 COPY ./services/chunk_customer/requirements.txt /src/
 RUN pip3 install -r requirements.txt --break-system-packages
 
+COPY ./services/chunk_customer /src/
+
+CMD ["fastapi", "run", "main.py", "--host", "0.0.0.0","--port", "8000"]
+
 EXPOSE 8000
