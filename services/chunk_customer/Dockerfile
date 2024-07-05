@@ -18,6 +18,4 @@ RUN pip3 install -r requirements.txt --break-system-packages
 
 COPY . /src/
 
-# CMD ["fastapi", "run", "main.py", "--host", "0.0.0.0","--port", "8000"]
-
 EXPOSE 8000
