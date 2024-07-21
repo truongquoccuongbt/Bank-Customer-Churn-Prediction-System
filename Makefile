@@ -21,9 +21,9 @@ stop-dev:
 build-jen:
 	docker build -f jenkins/Dockerfile -t jenkins:custom .
 run-jen:
-	docker compose -f jenkins/prod.docker-compose.yaml up
+	docker compose -f jenkins/dev.docker-compose.yaml up
 down-jen:
-	docker compose -f jenkins/prod.docker-compose.yaml down
+	docker compose -f jenkins/dev.docker-compose.yaml down
 
 # Help
 help:  ## Display this help
