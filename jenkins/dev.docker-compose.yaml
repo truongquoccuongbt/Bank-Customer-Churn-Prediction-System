@@ -6,6 +6,8 @@ services:
     restart: unless-stopped
     privileged: true
     user: root
+    environment:
+      - TZ=Asia/Saigon
     ports:
       - 8081:8080
       - 50000:50000
