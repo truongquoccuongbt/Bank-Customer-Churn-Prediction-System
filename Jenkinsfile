@@ -7,11 +7,7 @@ pipeline {
 
     stages {
         stage('Build') {
-            agent {
-                docker {
-                    image 'python:3.8'
-                }
-            }
+            agent any
             steps {
                 sh 'docker-compose -f ./docker-compose.yaml  -f ./docker-compose.dev.yaml build'
             }
