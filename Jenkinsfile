@@ -1,4 +1,8 @@
 pipeline {
+    environment {
+        p = sh 'echo $PATH'
+        PATH = p + ':/usr/local/bin/docker-compose'
+    }
     agent {
         docker {
             image 'python:3.8'
