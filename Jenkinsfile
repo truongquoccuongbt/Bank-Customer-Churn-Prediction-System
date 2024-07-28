@@ -3,11 +3,11 @@ pipeline {
     //     p = sh 'echo $PATH'
     //     PATH = p + ':/usr/local/bin/docker-compose'
     // }
+    agent any
     
 
     stages {
         stage('Build') {
-            agent any
             steps {
                 sh 'docker-compose -f ./docker-compose.yaml  -f ./docker-compose.dev.yaml build'
             }
