@@ -12,7 +12,7 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh 'docker-compose -f ./docker-compose.yaml  -f ./docker-compose.dev.yaml build'
+                sh 'docker compose -f ./docker-compose.yaml  -f ./docker-compose.dev.yaml build'
             }
         }
         stage('Test') {
