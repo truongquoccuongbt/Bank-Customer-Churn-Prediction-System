@@ -1,8 +1,7 @@
 pipeline {
-    // environment {
-    //     p = sh 'echo $PATH'
-    //     PATH = p + ':/usr/local/bin/docker-compose'
-    // }
+    environment {
+        PATH = "$PATH:/usr/local/bin"
+    }
     agent any
     
 
