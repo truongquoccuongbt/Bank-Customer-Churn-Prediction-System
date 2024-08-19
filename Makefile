@@ -9,12 +9,12 @@ run-env-jup: ## run env for jupiter local and use browser
 run-jup: ## run env for jupiter local server and connect by vscode
 	jupyter server --port=8888 --no-browser --ip=0.0.0.0 --allow-root
 
-# Devlopment
-build-dev:
+# Devlopment API
+build-api:
 	docker-compose -f ./docker-compose.yaml  -f ./docker-compose.dev.yaml build
-run-dev:
+run-api:
 	docker-compose -f ./docker-compose.yaml  -f ./docker-compose.dev.yaml up
-stop-dev:
+stop-api:
 	docker-compose -f ./docker-compose.yaml  -f ./docker-compose.dev.yaml down
 
 # Build env for jenkins
