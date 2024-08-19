@@ -1,0 +1,20 @@
+version: '3.8'
+services:
+  jenkins:
+    image: jenkins:jcasc
+    container_name: jenkins_casc
+    restart: unless-stopped
+    privileged: true
+    user: root
+    environment:
+      - TZ=Asia/Saigon
+    ports:
+      - 8081:8080
+      - 50000:50000
+    volumes:
+      - jenkins_home:/var/jenkins_home
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /usr/local/bin/docker-compose:/usr/bin/docker-compose
+
+volumes:
+  jenkins_home:
