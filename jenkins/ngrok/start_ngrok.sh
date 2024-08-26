@@ -11,9 +11,9 @@
 # NGROK_PUBLIC_URL=""
 # while [ -z "$NGROK_PUBLIC_URL" ]; do
 #   # Run 'curl' against ngrok API and extract public (using 'sed' command)
-#   export NGROK_PUBLIC_URL=$(curl --silent --max-time 10 --connect-timeout 5 \
-#                             --show-error http://127.0.0.1:4040/api/tunnels | \
-#                             sed -nE 's/.*public_url":"https:..([^"]*).*/\1/p')
+  export NGROK_PUBLIC_URL=$(curl --silent --max-time 10 --connect-timeout 5 \
+                            --show-error http://127.0.0.1:4040/api/tunnels | \
+                            sed -nE 's/.*public_url":"https:..([^"]*).*/\1/p')
 #   sleep 1
 #   echo -n "."
 # done
@@ -30,7 +30,7 @@ while [ -z "$ID_HOOK" ]; do
     -H "Authorization: Bearer"   \
     -H "X-GitHub-Api-Version: 2022-11-28"  \
     https://api.github.com/repos/truongquoccuongbt/Bank-Customer-Churn-Prediction/hooks |
-    sed -nE 's/.*id":"([0-9"]*).*/\1/p')
+    sed -nE 's/.*id":"([0-9]*).*/\1/p')
 
   #   sleep 1
   #   echo -n "."
