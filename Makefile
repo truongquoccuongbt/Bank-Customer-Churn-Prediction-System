@@ -9,12 +9,12 @@ run-env-jup: ## run env for jupiter local and use browser
 run-jup: ## run env for jupiter local server and connect by vscode
 	jupyter server --port=8888 --no-browser --ip=0.0.0.0 --allow-root
 
-# Devlopment
-build-dev:
+# Devlopment API
+build-api:
 	docker-compose -f ./docker-compose.yaml  -f ./docker-compose.dev.yaml build
-run-dev:
+run-api:
 	docker-compose -f ./docker-compose.yaml  -f ./docker-compose.dev.yaml up
-stop-dev:
+stop-api:
 	docker-compose -f ./docker-compose.yaml  -f ./docker-compose.dev.yaml down
 
 # Build env for jenkins
@@ -24,6 +24,15 @@ run-jen:
 	docker compose -f jenkins/dev.docker-compose.yaml up
 down-jen:
 	docker compose -f jenkins/dev.docker-compose.yaml down
+
+start-all-serv-dev: ## start all service in dev env
+	docker compose -f jenkins/dev.docker-compose.yaml up -d
+	docker-compose -f ./docker-compose.yaml  -f ./docker-compose.dev.yaml up -d
+	docker run --name dev -it -p 8888:8888 -v .:/src ds_env_code -d
+
+stop-all-serv-dev:
+	docker stop dev
+
 
 # Help
 help:  ## Display this help
