@@ -35,6 +35,7 @@ stop-all-serv-dev: ## stop all service in dev env
 	docker stop dev
 	docker-compose -f ./docker-compose.yaml  -f ./docker-compose.dev.yaml down -d
 	docker compose -f jenkins/dev.docker-compose.yaml down -d
+	sh ./jenkins/ngrok/stop_ngrok.sh
 
 
 # Help
