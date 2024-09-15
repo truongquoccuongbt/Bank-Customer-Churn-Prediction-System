@@ -61,7 +61,7 @@ curl -L \
   -d '{"active":true,"config": {
         "content_type": "json",
         "insecure_ssl": "0",
-        "url": "'"https://${NGROK_PUBLIC_URL}/github-webhook"'"
+        "url": "'"https://${NGROK_PUBLIC_URL}/github-webhook/"'"
       }}'
 
 
