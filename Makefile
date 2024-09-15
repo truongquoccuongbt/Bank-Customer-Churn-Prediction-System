@@ -29,11 +29,17 @@ start-all-serv-dev: ## start all service in dev env
 	docker compose -f jenkins/dev.docker-compose.yaml up -d
 	docker-compose -f ./docker-compose.yaml  -f ./docker-compose.dev.yaml up -d
 	docker run --name dev -it -p 8888:8888 -v .:/src ds_env_code -d
+	sh ./jenkins/ngrok/start_ngrok.sh  8081
 
-stop-all-serv-dev:
+stop-all-serv-dev: ## stop all service in dev env
 	docker stop dev
+	docker-compose -f ./docker-compose.yaml  -f ./docker-compose.dev.yaml down -d
+	docker compose -f jenkins/dev.docker-compose.yaml down -d
+	sh ./jenkins/ngrok/stop_ngrok.sh
 
 
 # Help
 help:  ## Display this help
-	@awk 'BEGIN {FS = ":.*##"; printf "\nUsage:\n  make \033[36m<target>\033[0m\n"} /^[.a-zA-Z_-]+:.*?##/ { printf "  \033[36m%-15s\033[0m %s\n", $$1, $$2 } /^##@/ { printf "\n\033[1m%s\033[0m\n", substr($$0, 5) } ' $(MAKEFILE_LIST)
+	@awk 'BEGIN { \
+			FS = ":.*##"; printf "\nUsage:\n  make \033[36m<target>\033[0m\n" \
+		} /^[.a-zA-Z_-]+:.*?##/ { printf "  \033[36m%-15s\033[0m %s\n", $$1, $$2 } /^##@/ { printf "\n\033[1m%s\033[0m\n", substr($$0, 5) } ' $(MAKEFILE_LIST)
