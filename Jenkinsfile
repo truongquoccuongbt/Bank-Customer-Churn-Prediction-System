@@ -1,7 +1,7 @@
 pipeline {
     agent any
 
-    envicronment {
+    environment {
         registry = 'truongcuongbt/bank-customer-chunk-api'
         registryCredential = 'dockerhub'
     }
