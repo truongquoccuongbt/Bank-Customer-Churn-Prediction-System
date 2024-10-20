@@ -13,7 +13,6 @@ pipeline {
                     sh 'ls && docker-compose -f ./services/docker-compose.yaml  -f ./services/docker-compose.dev.yaml build'
                     echo 'Push image to docker hub...'
                     docker.withRegistry('', registryCredential) {
-                        echo 'login success'
                         sh 'docker push truongcuongbt/bank-customer-chunk-api:latest'
                         echo 'push image success'
                     }
