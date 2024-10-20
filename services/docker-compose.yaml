@@ -4,4 +4,4 @@ services:
     image: chunk-customer-api
     build:
       context: .
-      dockerfile: ./services/chunk_customer/Dockerfile
+      dockerfile: ./chunk_customer/Dockerfile
