@@ -22,7 +22,7 @@ pipeline {
         // }
         stage('SSH commands') {
             steps {
-                sshagent(['vps_bankchunk']) {
+                sshagent(credentials: ['vps_bankchunk']) {
                     sh '''
                     ls
                     '''
