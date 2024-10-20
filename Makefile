@@ -19,7 +19,7 @@ stop-api:
 
 # Build env for jenkins
 build-jen:
-	docker build -f jenkins/Dockerfile -t jenkins:custom .
+	docker build --no-cache -f  jenkins/Dockerfile -t jenkins:custom .
 run-jen:
 	docker compose -f jenkins/dev.docker-compose.yaml up
 down-jen:

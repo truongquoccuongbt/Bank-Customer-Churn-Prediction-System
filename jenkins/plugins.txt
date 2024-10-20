@@ -1,4 +1,5 @@
 ant:latest
+ssh-agent:latest
 antisamy-markup-formatter:latest
 build-timeout:latest
 cloudbees-folder:latest
@@ -20,4 +21,3 @@ workflow-aggregator:latest
 ws-cleanup:latest
 docker-plugin:latest
 docker-workflow:latest
-ssh-agent:latest
