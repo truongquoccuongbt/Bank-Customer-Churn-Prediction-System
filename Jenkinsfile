@@ -14,6 +14,8 @@ pipeline {
                     echo 'Push image to docker hub...'
                     docker.withRegistry('', registryCredential) {
                         echo 'login success'
+                        sh 'docker push truongcuongbt/bank-customer-chunk-api:latest'
+                        echo 'push image success'
                     }
                 }
                 
