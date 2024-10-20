@@ -9,13 +9,16 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh 'ls && docker-compose -f ./services/docker-compose.yaml  -f ./services/docker-compose.dev.yaml build'
-                dockerImage = docker.build registry + ":$BUILD_NUMBER"
-                echo 'Push image to docker hub...'
-                docker.withRegistry('', registryCredential) {
-                    dockerImage.push()
-                    dockerImage.push('lasted')
+                script {
+                    sh 'ls && docker-compose -f ./services/docker-compose.yaml  -f ./services/docker-compose.dev.yaml build'
+                    dockerImage = docker.build registry + ":$BUILD_NUMBER"
+                    echo 'Push image to docker hub...'
+                    docker.withRegistry('', registryCredential) {
+                        dockerImage.push()
+                        dockerImage.push('lasted')
+                    }
                 }
+                
             }
         }
         stage('Test') {
