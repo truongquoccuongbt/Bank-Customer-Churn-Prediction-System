@@ -27,14 +27,15 @@ down-jen:
 
 start-all-serv-dev: ## start all service in dev env
 	docker compose -f jenkins/dev.docker-compose.yaml up -d
-	docker-compose -f ./docker-compose.yaml  -f ./docker-compose.dev.yaml up -d
-	docker run --name dev -it -p 8888:8888 -v .:/src ds_env_code -d
+	docker-compose -f ./services/docker-compose.yaml  -f ./services/docker-compose.dev.yaml up -d
+	docker run --name dev -it -d -p 8888:8888 -v .:/src ds_env_code
 	sh ./jenkins/ngrok/start_ngrok.sh  8081
 
 stop-all-serv-dev: ## stop all service in dev env
 	docker stop dev
-	docker-compose -f ./docker-compose.yaml  -f ./docker-compose.dev.yaml down -d
-	docker compose -f jenkins/dev.docker-compose.yaml down -d
+	docker-compose -f ./services/docker-compose.yaml  -f ./services/docker-compose.dev.yaml down
+	docker compose -f jenkins/dev.docker-compose.yaml down
+	docker stop dev && docker rm dev
 	sh ./jenkins/ngrok/stop_ngrok.sh
 
 
