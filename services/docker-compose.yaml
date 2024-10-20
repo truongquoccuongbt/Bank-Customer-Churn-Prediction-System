@@ -1,7 +1,7 @@
 
 services:
   chunk.customer.api:
-    image: chunk-customer-api
+    image: truongcuongbt/bank-customer-chunk-api
     build:
       context: .
       dockerfile: ./chunk_customer/Dockerfile
