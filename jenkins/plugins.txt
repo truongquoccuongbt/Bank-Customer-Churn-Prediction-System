@@ -1,4 +1,5 @@
 ant:latest
+ssh-agent:latest
 antisamy-markup-formatter:latest
 build-timeout:latest
 cloudbees-folder:latest
