@@ -25,6 +25,11 @@ run-jen:
 down-jen:
 	docker compose -f jenkins/dev.docker-compose.yaml down
 
+run-mlflow:
+	docker compose -f mlflow/docker-compose.yaml up -d
+stop-mflow:
+	docker compose -f mlflow/docker-compose.yaml down
+
 start-all-serv-dev: ## start all service in dev env
 	docker compose -f jenkins/dev.docker-compose.yaml up -d
 	docker-compose -f ./services/docker-compose.yaml  -f ./services/docker-compose.dev.yaml up -d
