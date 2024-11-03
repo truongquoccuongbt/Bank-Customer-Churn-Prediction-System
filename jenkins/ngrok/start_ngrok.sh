@@ -4,7 +4,7 @@
 # source my_custom.env
 LOCAL_PORT=${1-8080}
 
-. ./.env
+. ./jenkins/ngrok/.env
 echo $GITHUB_TOKEN
 
 echo "Start ngrok in background on port [ $LOCAL_PORT ]"
