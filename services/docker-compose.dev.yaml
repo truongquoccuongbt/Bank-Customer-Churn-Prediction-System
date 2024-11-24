@@ -2,6 +2,12 @@
 services:
   chunk.customer.api:
     container_name: chunk.customer.api
-    command: fastapi dev services/chunk_customer/main.py --host 0.0.0.0 --port 8000
+    command: fastapi dev ./chunk_customer/main.py --host 0.0.0.0 --port 8000
     ports:
       - 8000:8000
+    networks:
+      - mlflow-network
+
+networks:
+  mlflow-network:
+    name: mlflow-network
