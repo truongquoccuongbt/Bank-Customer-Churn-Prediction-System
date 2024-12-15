@@ -25,18 +25,25 @@ run-jen:
 down-jen:
 	docker compose -f jenkins/dev.docker-compose.yaml down
 
+run-mlflow:
+	docker compose -f mlflow/docker-compose.yaml up -d
+stop-mflow:
+	docker compose -f mlflow/docker-compose.yaml down
+
 start-all-serv-dev: ## start all service in dev env
 	docker compose -f jenkins/dev.docker-compose.yaml up -d
+	docker compose -f mlflow/docker-compose.yaml up -d
 	docker-compose -f ./services/docker-compose.yaml  -f ./services/docker-compose.dev.yaml up -d
-	docker run --name dev -it -d -p 8888:8888 -v .:/src ds_env_code
+	docker run --name dev --network mlflow-network -it -d -p 8888:8888 -v .:/src ds_env_code
 	sh ./jenkins/ngrok/start_ngrok.sh  8081
 
 stop-all-serv-dev: ## stop all service in dev env
-	docker stop dev
 	docker-compose -f ./services/docker-compose.yaml  -f ./services/docker-compose.dev.yaml down
 	docker compose -f jenkins/dev.docker-compose.yaml down
 	docker stop dev && docker rm dev
+	docker compose -f mlflow/docker-compose.yaml down
 	sh ./jenkins/ngrok/stop_ngrok.sh
+	
 
 
 # Help
