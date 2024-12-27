@@ -5,9 +5,10 @@ services:
     command: fastapi dev ./chunk_customer/main.py --host 0.0.0.0 --port 8000
     ports:
       - 8000:8000
+    volumes:
+      - .:/src/
     networks:
       - mlflow-network
 
 networks:
   mlflow-network:
-    name: mlflow-network

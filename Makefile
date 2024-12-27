@@ -38,10 +38,10 @@ start-all-serv-dev: ## start all service in dev env
 	sh ./jenkins/ngrok/start_ngrok.sh  8081
 
 stop-all-serv-dev: ## stop all service in dev env
-	docker-compose -f ./services/docker-compose.yaml  -f ./services/docker-compose.dev.yaml down
 	docker compose -f jenkins/dev.docker-compose.yaml down
 	docker stop dev && docker rm dev
 	docker compose -f mlflow/docker-compose.yaml down
+	docker-compose -f ./services/docker-compose.yaml  -f ./services/docker-compose.dev.yaml down
 	sh ./jenkins/ngrok/stop_ngrok.sh
 	
 
